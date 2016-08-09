@@ -20,6 +20,10 @@ exports.sendEmail = function *() {
     if (!email || !flag) {
         return this.body = new Result(Result.ERROR, '缺少参数');
     }
+    let regExp = /^([\w-_]+(?:\.[\w-_]+)*)@((?:[a-z0-9]+(?:-[a-zA-Z0-9]+)*)+\.[a-z]{2,6})$/;
+    if(!regExp.test(email)) {
+        return this.body = new Result(Result.ERROR, '请输入正确的邮箱');
+    }
     let findU = yield User.findOne({email: email}, {_id: 1});
     if(!findU) {
         return this.body = new Result(Result.ERROR, '该邮箱没有绑定用户');
