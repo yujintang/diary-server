@@ -9,10 +9,7 @@ let router = require('koa-router')();
  * 主页
  */
 router.get('/', function *() {
-    this.body = 'welcome to diary-server';
+    this.body = 'welcome to 7diary';
 });
-
-
-
 
 module.exports = router;
